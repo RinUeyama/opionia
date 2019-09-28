@@ -64,11 +64,11 @@ Pixi.jsを利用しています．
 
 ### Stylus
 
+ - Vuetifyを導入
  - RSCSSを利用
  - RSCSSのネストは4階層まで．それ以上はコンポーネントを分離
- - colorは変数として定義
+ - colorはVuetifyのJavascript変数として定義
  - mixinやextendのネストは極力避けて，使用時は名前に明記すること
- - 空白ユーティリティは使用せず，remで定義
  - util系のコンポーネントではmarginを使用せず，使用先で指定
 
 ### TypeScript
