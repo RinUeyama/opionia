@@ -1,3 +1,7 @@
+<template lang="pug">
+  h2 ABOUT
+</template>
+
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
