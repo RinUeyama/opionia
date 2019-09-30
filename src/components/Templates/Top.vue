@@ -17,3 +17,8 @@ import Navigation from '@/components/Organisms/Navigation.vue'
 })
 export default class Top extends Vue {}
 </script>
+
+<style lang="stylus" scoped>
+#top
+  height 100vh
+</style>
