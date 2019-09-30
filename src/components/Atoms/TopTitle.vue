@@ -1,5 +1,7 @@
 <template lang="pug">
-  h1.title {{ title }}
+  #title
+    v-container
+      h1.display-4.text-center {{ title }}
 </template>
 
 <script lang="ts">
@@ -10,3 +12,8 @@ export default class TopTitle extends Vue {
   title = 'Opionia'
 }
 </script>
+
+<style lang="stylus" scoped>
+#title
+  margin-top 30vh
+</style>

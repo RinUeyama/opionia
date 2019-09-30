@@ -1,10 +1,10 @@
 <template lang="pug">
-  h2 PRODUCT
+  #blog
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class Product extends Vue {}
+export default class Blog extends Vue {}
 </script>

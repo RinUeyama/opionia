@@ -1,7 +1,9 @@
 <template lang="pug">
-  #Nav
-    ul
-      li(v-for="list in lists") {{ list.name }}
+  v-container.nav
+    v-layout.justify-center(row wrap)
+      v-flex(sm3 v-for="list in lists" :key="list.name")
+        router-link(:to="list.link" replace)
+          h2.text-center {{ list.name }}
 </template>
 
 <script lang="ts">
@@ -11,8 +13,12 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class Navigation extends Vue {
   lists = [
     {
-      name: 'Product',
-      link: '#product'
+      name: 'Blog',
+      link: '#blog'
+    },
+    {
+      name: 'Library',
+      link: '#library'
     },
     {
       name: 'About',
@@ -21,3 +27,8 @@ export default class Navigation extends Vue {
   ]
 }
 </script>
+
+<style lang="stylus" scoped>
+.nav
+  margin-top 10vh
+</style>
