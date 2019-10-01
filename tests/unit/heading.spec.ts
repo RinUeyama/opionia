@@ -1,12 +1,17 @@
-import { shallowMount } from '@vue/test-utils'
+import Vuetify from 'vuetify'
 import Heading from '@/components/Atoms/Heading.vue'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 
 describe('Heading.vue', () => {
-  it('headingがPropされレンダリングされたとき', () => {
-    const heading = 'Lorem Ipsum Heading'
+  it('headingテキストがPropされているか', () => {
+    const localVue = createLocalVue()
+    localVue.use(Vuetify)
+
+    const headingText = 'Lorem Heading'
     const wrapper = shallowMount(Heading, {
-      propsData: { heading }
+      localVue,
+      propsData: { heading: headingText }
     })
-    expect(wrapper.text()).toMatch(heading)
+    expect(wrapper.props().heading).toMatch(headingText)
   })
 })
