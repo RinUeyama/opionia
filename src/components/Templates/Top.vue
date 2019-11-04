@@ -1,7 +1,7 @@
 <template lang="pug">
   #top
-    TopTitle
-    Navigation
+    top-title
+    navigation
 </template>
 
 <script lang="ts">

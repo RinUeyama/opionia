@@ -1,20 +1,20 @@
 <template lang="pug">
-  #home
-    Top
-    Blog
-    About
+  v-container
+    top
+    products
+    about
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Top from '@/components/Templates/Top.vue'
-import Blog from '@/components/Templates/Blog.vue'
+import Products from '@/components/Templates/Products.vue'
 import About from '@/components/Templates/About.vue'
 
 @Component({
   components: {
     Top,
-    Blog,
+    Products,
     About
   }
 })

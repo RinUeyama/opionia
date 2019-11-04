@@ -13,8 +13,8 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class Navigation extends Vue {
   lists = [
     {
-      name: 'Blog',
-      link: '#blog'
+      name: 'Products',
+      link: '#products'
     },
     {
       name: 'Library',

@@ -1,7 +1,6 @@
 <template lang="pug">
   .heading
-    v-container
-      h1 {{ heading }}
+    h1 {{ heading }}
 </template>
 
 <script lang="ts">
