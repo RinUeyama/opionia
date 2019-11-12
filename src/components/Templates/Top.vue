@@ -1,20 +1,12 @@
 <template lang="pug">
   #top
-    top-title
-    navigation
+    h1 OPIONIA
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import TopTitle from '@/components/Atoms/TopTitle.vue'
-import Navigation from '@/components/Organisms/Navigation.vue'
 
-@Component({
-  components: {
-    TopTitle,
-    Navigation
-  }
-})
+@Component
 export default class Top extends Vue {}
 </script>
 
