@@ -12,5 +12,5 @@ export default class Top extends Vue {}
 
 <style lang="stylus" scoped>
 #top
-  height 100vh
+  height 30vh
 </style>
