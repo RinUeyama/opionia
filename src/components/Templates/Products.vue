@@ -8,6 +8,7 @@
           v-card.ma-4.pa-4(
             flat
             hover
+            @click="route(product.path)"
           )
             v-img(
               :src="product.thumbnail"
@@ -44,29 +45,38 @@ export default class Products extends Vue {
     {
       name: '画像処理100本ノック JavaScript',
       thumbnail: require('@/assets/thumbnail/Storivia.png'),
+      path: '/Gasyori100knockJS/',
       description: '画像処理100本ノックという問題集をTypeScriptで解き進めています．'
     },
     {
       name: 'CoC きゃらんだむ',
       thumbnail: require('@/assets/thumbnail/CoC_charandom.png'),
+      path: '',
       description: 'クトゥルフ神話TRPGというアナログゲームのキャラクターを自動で生成するアプリです．',
       dark: true
     },
     {
       name: 'OPIONIA (old)',
       thumbnail: require('@/assets/thumbnail/OPIONIA_old.png'),
+      path: '',
       description: 'このドメインはかつてブログとして使用していました．'
     },
     {
       name: 'ResonicaPress',
       thumbnail: require('@/assets/thumbnail/ResonicaPress.png'),
+      path: '',
       description: 'アナログゲームのデータを管理するWikiのようなアプリです．'
     },
     {
       name: 'Storivia',
       thumbnail: require('@/assets/thumbnail/Storivia.png'),
+      path: '/Storivia',
       description: 'プチ卒論で作成したアプリで，小説などのプロット作成を支援します．'
     }
   ]
+
+  route (path: string) {
+    this.$router.push({ path: path })
+  }
 }
 </script>
