@@ -1,5 +1,7 @@
-export default function answer1 (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): ImageData {
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-  console.log(imageData)
-  return imageData
+export default function RGBtoBGR (data: Uint8ClampedArray): void {
+  for (let i = 0; i < data.length; i += 4) {
+    // (r+g+b)/3
+    const color = (data[i] + data[i + 1] + data[i + 2]) / 3
+    data[i] = data[i + 1] = data[i + 2] = color
+  }
 }
