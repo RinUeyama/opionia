@@ -13,7 +13,6 @@ export function drawCanvas (canvasId: string, image: HTMLImageElement): void {
    * @param imagePath: 画像へのパス．Vueなので，ビルド後のパスかURLで指定してください．
    */
   const _image: HTMLImageElement = new Image()
-  _image.src = image.src
 
   _image.onload = () => {
     const canvas: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement
@@ -23,6 +22,8 @@ export function drawCanvas (canvasId: string, image: HTMLImageElement): void {
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d') as CanvasRenderingContext2D
     ctx.drawImage(_image, 0, 0)
   }
+
+  _image.src = image.src
 }
 
 export function answerFunction (id: number, canvasId: string, image: HTMLImageElement): void {
@@ -46,7 +47,6 @@ export function answerFunction (id: number, canvasId: string, image: HTMLImageEl
    */
   if (answers[id - 1]) {
     const _image: HTMLImageElement = new Image()
-    _image.src = image.src
 
     _image.onload = () => {
       const canvas: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement
@@ -56,19 +56,14 @@ export function answerFunction (id: number, canvasId: string, image: HTMLImageEl
       const ctx: CanvasRenderingContext2D = canvas.getContext('2d') as CanvasRenderingContext2D
       ctx.drawImage(_image, 0, 0)
 
-      const imageData: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-      let data = imageData.data
+      let src: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      let dst: ImageData = ctx.createImageData(_image.naturalWidth, image.naturalHeight)
+      answers[id - 1](src.data, dst.data)
 
-      /**
-       * data を直接加工します．
-       * ImageData.data は readonly プロパティなため
-       * Image.data = newData のようにできません．
-       * @param data {ImageData.data} 各ピクセルの色数情報
-       */
-      answers[id - 1](data)
-
-      ctx.putImageData(imageData, 0, 0)
+      ctx.putImageData(dst, 0, 0)
     }
+
+    _image.src = image.src
   } else {
     console.log("the value of 'id' argment in answerFunction is invalid. just input number like '28' not 'answer28', or you did, the answer does not exist now.")
   }
