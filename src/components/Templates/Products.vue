@@ -46,13 +46,13 @@ export default class Products extends Vue {
       name: '画像処理100本ノック JavaScript',
       thumbnail: require('@/assets/thumbnail/Gasyori100knockJS.png'),
       path: '/Gasyori100knockJS/',
-      description: '画像処理をTypeScriptで行いました．'
+      description: '画像処理をTypeScriptで実装．'
     },
     {
       name: 'CoC きゃらんだむ',
       thumbnail: require('@/assets/thumbnail/CoC_charandom.png'),
       path: '',
-      description: 'クトゥルフ神話TRPGというアナログゲームのキャラクターを自動で生成するアプリです．',
+      description: 'クトゥルフ神話TRPGのキャラクターを自動生成',
       dark: true
     },
     {
@@ -65,13 +65,13 @@ export default class Products extends Vue {
       name: 'ResonicaPress',
       thumbnail: require('@/assets/thumbnail/ResonicaPress.png'),
       path: '',
-      description: 'アナログゲームのデータを管理するWikiのようなアプリです．'
+      description: 'アナログゲームのデータ管理'
     },
     {
       name: 'Storivia',
       thumbnail: require('@/assets/thumbnail/Storivia.png'),
       path: '/Storivia',
-      description: 'プチ卒論で作成したアプリで，小説などのプロット作成を支援します．'
+      description: 'プロット作成支援'
     }
   ]
 
