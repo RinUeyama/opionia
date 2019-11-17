@@ -44,9 +44,9 @@ export default class Products extends Vue {
   products: Array<object> = [
     {
       name: '画像処理100本ノック JavaScript',
-      thumbnail: require('@/assets/thumbnail/Storivia.png'),
+      thumbnail: require('@/assets/thumbnail/Gasyori100knockJS.png'),
       path: '/Gasyori100knockJS/',
-      description: '画像処理100本ノックという問題集をTypeScriptで解き進めています．'
+      description: '画像処理をTypeScriptで行いました．'
     },
     {
       name: 'CoC きゃらんだむ',
