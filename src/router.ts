@@ -27,7 +27,7 @@ export default new Router({
       component: Storivia
     },
     {
-      path: '/gasyori100knockJS',
+      path: '/gasyori100knockJS/',
       name: 'gasyori100knockJS',
       component: Gasyori100knockJS
     }
