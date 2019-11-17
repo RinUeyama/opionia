@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "doc": "typedoc --mode modules --out typedocs src/*",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
@@ -44,6 +45,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "ts-jest": "^23.0.0",
+    "typedoc": "^0.15.2",
     "typescript": "^3.4.3",
     "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.10",

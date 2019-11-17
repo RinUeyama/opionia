@@ -1,44 +1,50 @@
 <template lang="pug">
   v-container
-    article
-      h1 画像処理100本ノック JavaScript
-      p XX様の画像処理100本ノックをJavaScript(TypeScript)で解いたものです．
-    h2 {{ currentAnswerID }}: {{ answerTitles[currentAnswerID - 1] }}
-    v-layout(row wrap)
-      v-flex(xs12 sm6)
-        canvas#canvas_origin(
-          width="240"
-          height="240"
-        )
-      v-flex(xs12 sm6)
-        canvas#canvas_answer(
-          width="240"
-          height="240"
-        )
-    v-layout
-      v-btn(@click="drawCanvasAnswer(currentAnswerID)") Click!
+    v-row.mt-4.pa-4(justify="center")
+      article
+        h1 画像処理100本ノック JavaScript
+        p XX様の画像処理100本ノックをJavaScript(TypeScript)で解いたものです．
+    v-row.mt-4.pa-4(justify="center")
+      h2 {{ currentAnswerId }}: {{ answerTitles[currentAnswerId - 1] }}
+    v-row.mt-4.pa-4(justify="center")
+      v-col(cols="12" md="6" lg="5" xl="4")
+        v-row(justify="center")
+          canvas#canvas_origin
+      v-col(cols="12" md="6" lg="5" xl="4")
+        v-row(justify="center")
+          canvas#canvas_answer
+    v-row.mt-4.pa-4(justify="center")
+      v-btn(@click="drawCanvasAnswer(currentAnswerId)") Click!
+    v-row.mt-4.pa-4(justify="center")
+      SrcCode(:id="currentAnswerId")
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { drawCanvas, answerFunction } from '@/pages/products/Gasyori100knockJS/answers/'
+import SrcCode from '@/pages/products/Gasyori100knockJS/answers/codes/SrcCode.vue'
 
-@Component
+@Component({
+  components: {
+    SrcCode
+  }
+})
 export default class Gasyori100knockJS extends Vue {
-  currentAnswerID: number = 1
   answerTitles: Array<string> = [
     /** 1 **/ 'RGBtoBGR'
   ];
 
+  currentAnswerId: number = 1
+
   drawCanvasAnswer (id: number) {
     const image = new Image()
-    image.src = require('@/assets/logo.png')
+    image.src = require('@/assets/images/TheAngelus.png')
     answerFunction(id, 'canvas_answer', image)
   }
 
   mounted () {
     const image = new Image()
-    image.src = require('@/assets/logo.png')
+    image.src = require('@/assets/images/TheAngelus.png')
     drawCanvas('canvas_origin', image)
   }
 }

@@ -1,7 +1,7 @@
+/**
+ * 1番目のチャネルと3番目のチャネルを入れ替えます．
+ */
 export default function RGBtoBGR (srcData: Uint8ClampedArray, dstData: Uint8ClampedArray): void {
-  /**
-   * 1番目のチャネルと3番目のチャネルを入れ替えます．
-   */
   for (let i = 0; i < srcData.length; i += 4) {
     dstData[i + 0] = srcData[i + 2] // R -> B
     dstData[i + 1] = srcData[i + 1] // G -> G

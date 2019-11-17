@@ -6,12 +6,10 @@
 import answer2 from './answer2'
 import RGBtoBGR from './answer1'
 
+/**
+ * キャンバスに画像を描画する関数．
+ */
 export function drawCanvas (canvasId: string, image: HTMLImageElement): void {
-  /**
-   * キャンバスに画像を描画する関数．
-   * @param canvasId: canvasのid
-   * @param imagePath: 画像へのパス．Vueなので，ビルド後のパスかURLで指定してください．
-   */
   const _image: HTMLImageElement = new Image()
 
   _image.onload = () => {
@@ -26,14 +24,10 @@ export function drawCanvas (canvasId: string, image: HTMLImageElement): void {
   _image.src = image.src
 }
 
+/**
+ * 画像に指定idの画像処理関数を施してキャンバスに描画する関数
+ */
 export function answerFunction (id: number, canvasId: string, image: HTMLImageElement): void {
-  /**
-   * キャンバスに指定idの画像処理を施して描画する関数
-   * @param id: 画像処理関数のid，1~100まで存在．
-   * @param canvasId: 画像を描画する canvas の id
-   * @param image: image 要素
-   */
-
   // 画像処理関数のリスト．インデックスを指定してアクセス．
   const answers: any = [
     /** 1 **/ RGBtoBGR,
