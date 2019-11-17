@@ -3,7 +3,7 @@
     v-row.mt-4.pa-4(justify="center")
       article
         h1 画像処理100本ノック JavaScript
-        p XX様の画像処理100本ノックをJavaScript(TypeScript)で解いたものです．
+        p yoyoyo_様の画像処理100本ノックをJavaScript(TypeScript)で解いたものです．
     v-row.mt-4.pa-4(justify="center")
       h2 {{ currentAnswerId }}: {{ answerTitles[currentAnswerId - 1] }}
     v-row.mt-4.pa-4(justify="center")
