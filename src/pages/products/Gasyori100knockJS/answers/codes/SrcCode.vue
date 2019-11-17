@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:is="code")
+  .pa-4(:is="code")
 </template>
 
 <script lang="ts">
