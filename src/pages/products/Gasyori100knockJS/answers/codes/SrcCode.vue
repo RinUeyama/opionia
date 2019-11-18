@@ -16,8 +16,6 @@ import AnswerCode2 from '@/pages/products/Gasyori100knockJS/answers/codes/Answer
 export default class SrcCode extends Vue {
   @Prop() id: number | undefined
 
-  key: number = 0
-
   get currentId () {
     return this.id
   }
