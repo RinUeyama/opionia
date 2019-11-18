@@ -27,9 +27,14 @@ export default new Router({
       component: Storivia
     },
     {
-      path: '/gasyori100knockJS/',
+      path: '/gasyori100knockJS/:id(\\d+)',
       name: 'gasyori100knockJS',
-      component: Gasyori100knockJS
+      component: Gasyori100knockJS,
+      props: route => ({ id: Number(route.params.id) })
+    },
+    {
+      path: '/gasyori100knockJS/*',
+      redirect: '/gasyori100knockJS/1'
     }
   ]
 })

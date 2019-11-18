@@ -1,22 +1,25 @@
 <template lang="pug">
-  .pa-4(:is="code")
+  component.pa-4(:is="`AnswerCode${currentId}`")
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { drawCanvas, answerFunction } from '@/pages/products/Gasyori100knockJS/answers/'
+import { Component, Prop, Watch, Vue, Inject } from 'vue-property-decorator'
 import AnswerCode1 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode1.vue'
+import AnswerCode2 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode2.vue'
 
 @Component({
   components: {
-    AnswerCode1
+    AnswerCode1,
+    AnswerCode2
   }
 })
 export default class SrcCode extends Vue {
-  @Prop(Number) readonly id: number | undefined
+  @Prop() id: number | undefined
 
-  get code () {
-    return `AnswerCode${this.id}`
+  key: number = 0
+
+  get currentId () {
+    return this.id
   }
 }
 </script>

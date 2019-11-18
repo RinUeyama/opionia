@@ -14,10 +14,12 @@
         dstData[i + 3] = srcData[i + 3] // a -> a
       }
     }
-    </code></pre>
+  </code></pre>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
 export default class AnswerCode1 extends Vue {}
 </script>

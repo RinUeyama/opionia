@@ -5,8 +5,20 @@
         h1 画像処理100本ノック JavaScript
         p yoyoyo_様の画像処理100本ノックをJavaScript(TypeScript)で解いたものです．
     v-row.mt-4.pa-4(justify="center")
-      h2 {{ currentAnswerId }}: {{ answerTitles[currentAnswerId - 1] }}
-    v-row.mt-4.pa-4(justify="center")
+      v-btn.mx-4(
+        :disabled="currentId <= 1"
+        text
+        fab
+        @click="currentId--; movePage()"
+      ) <<
+      h2.mx-4.pt-2 {{ currentId }}. {{ answerTitles[currentId - 1] }}
+      v-btn.mx-4(
+        :disabled="currentId >= 2"
+        text
+        fab
+        @click="currentId++; movePage()"
+      ) >>
+    v-row.pa-4(justify="center")
       v-col(cols="12" md="6" lg="5" xl="4")
         v-row(justify="center")
           canvas#canvas_origin
@@ -14,13 +26,11 @@
         v-row(justify="center")
           canvas#canvas_answer
     v-row.mt-4.pa-4(justify="center")
-      v-btn(@click="drawCanvasAnswer(currentAnswerId)") Click!
-    v-row.mt-4.pa-4(justify="center")
-      SrcCode(:id="currentAnswerId")
+      SrcCode(:id="currentId")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { drawCanvas, answerFunction } from '@/pages/products/Gasyori100knockJS/answers/'
 import SrcCode from '@/pages/products/Gasyori100knockJS/answers/codes/SrcCode.vue'
 
@@ -31,10 +41,20 @@ import SrcCode from '@/pages/products/Gasyori100knockJS/answers/codes/SrcCode.vu
 })
 export default class Gasyori100knockJS extends Vue {
   answerTitles: Array<string> = [
-    /** 1 **/ 'RGBtoBGR'
+    /** 1 **/ 'RGBtoBGR',
+    /** 2 **/ 'greyscale'
   ];
 
-  currentAnswerId: number = 1
+  @Prop({ type: Number, default: 1, required: true })
+  id: number | undefined
+
+  currentId: number = this.id ? this.id : 1
+  showCode: boolean = false
+
+  movePage () {
+    this.$router.push(`/gasyori100knockJS/${this.currentId}`)
+    this.drawCanvasAnswer(this.currentId)
+  }
 
   drawCanvasAnswer (id: number) {
     const image = new Image()
@@ -46,6 +66,7 @@ export default class Gasyori100knockJS extends Vue {
     const image = new Image()
     image.src = require('@/assets/images/TheAngelus.png')
     drawCanvas('canvas_origin', image)
+    this.drawCanvasAnswer(this.currentId)
   }
 }
 </script>
