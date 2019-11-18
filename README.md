@@ -2,6 +2,7 @@
 
 Opionのポートフォリオです．
 元はブログとして運用していましたが，大きく改装中．
+以下は自分用のメモ．
 
 ## サイト構成
 
@@ -37,8 +38,7 @@ Pixi.jsを利用しています．
 開発環境が違ったり収まりきらない規模になった場合は，
 紹介ページを製作しURLを添付するべきでしょう．
 
- - someProduct内でさらにコンポーネントによる分割が必要な場合，プロダクト固有であることを示すため`p-`プレフィックスをファイル，フォルダ共に付与
- - `@/pages/products/someProduct`以下で専用の階層を作る場合，上記`@/${RODUCT_ROURTE}/pAtoms/pTriToggleButton`のように利用
+ - `@/pages/products/someProduct`以下で専用の階層を作る場合，上記`@/${RODUCT_ROURTE}/Atoms/TriToggleButton`のように利用
  - コンポーネント専用の定数は`@/common/constants/`ではなく（commonではないので）コンポーネントと同階層に`./constants/`として設置
 
 ### 命名規則
@@ -51,9 +51,8 @@ Pixi.jsを利用しています．
 
 ### コメント
 
- - `/** @file */`にのみJSDocを利用
+ - TypeDocを利用
  - 変数や関数の名前で説明しきれない場合のみコメントを付与
- - 処理が長くなる場合，処理のまとまりを`/*******/`で区切って表示
 
 ### Pug
 
@@ -74,7 +73,6 @@ Pixi.jsを利用しています．
 ### TypeScript
 
  - lodashで代替しうる関数はlodashを利用
- - 関数はなるべく参照透過性を持つこと
  - 定数は`@/common/constants/`で定義
  - JSONを返すAPIを利用する場合，`@/interfaces/`に型ファイルを配置
  - `someValue!.property`,`someValue as any as string`等は使用せずガードを記述
@@ -86,12 +84,12 @@ Pixi.jsを利用しています．
  - 処理が短ければ，見通しを優先して`mounted`に直接記載
  - 規模が大きければ，別ファイルにクラスとして記載して`someAnimation.init()`のように呼び出すこと
  - svgを除き，処理が極めて低速になるので，`pixi.js`と`vue`の`data`を連携させないこと．
- - SSRとして開発しないこと．必要があれば，Nuxtに移行しつつ`opionia/.ssr/`を参照すること．
+ - SSRとして開発しないこと．
  - `PIXI`に依存する処理 -> レイアウト -> アニメーション の順に記載
 
 ### images
 
- - `!command`で`.webp`を用意
+ - `python png2webp.py`で`.webp`を用意
  - `picture`を用い，`.webp`非対応ブラウザでは`.png | .jpeg`にフォールバック
 
 ### sounds
