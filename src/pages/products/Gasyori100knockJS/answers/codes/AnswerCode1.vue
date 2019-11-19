@@ -1,5 +1,6 @@
 <template>
-  <pre><code class="prettyprint lang-ts">
+  <v-code-highlight>
+    <pre class="language-typescript"><code>
     /**
      * 1番目のチャネルと3番目のチャネルを入れ替えます．
      */
@@ -14,11 +15,13 @@
         dstData[i + 3] = srcData[i + 3] // a -> a
       }
     }
-  </code></pre>
+    </code></pre>
+  </v-code-highlight>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { component as VueCodeHighlight } from 'vue-code-highlight'
 
 @Component
 export default class AnswerCode1 extends Vue {}
