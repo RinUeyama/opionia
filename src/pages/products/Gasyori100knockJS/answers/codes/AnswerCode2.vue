@@ -1,5 +1,6 @@
 <template>
-  <pre><code class="prettyprint lang-ts">
+  <div v-highlight>
+    <pre class="lang-javascript"><code>
     /**
      * グレースケール
      */
@@ -21,7 +22,8 @@
         dstData[i + 3] = srcData[i + 3]
       }
     }
-  </code></pre>
+    </code></pre>
+  </div>
 </template>
 
 <script lang="ts">

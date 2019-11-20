@@ -1,6 +1,6 @@
 <template>
-  <v-code-highlight>
-    <pre class="language-typescript"><code>
+  <div v-highlight>
+    <pre class="language-javascript"><code>
     /**
      * 1番目のチャネルと3番目のチャネルを入れ替えます．
      */
@@ -16,13 +16,17 @@
       }
     }
     </code></pre>
-  </v-code-highlight>
+    </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { component as VueCodeHighlight } from 'vue-code-highlight'
 
-@Component
+@Component({
+  components: {
+    VueCodeHighlight
+  }
+})
 export default class AnswerCode1 extends Vue {}
 </script>
