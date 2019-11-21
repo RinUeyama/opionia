@@ -5,19 +5,25 @@
         h1 画像処理100本ノック JavaScript
         p yoyoyo_様の画像処理100本ノックをJavaScript(TypeScript)で解いたものです．
     v-row.mt-4.pa-4(justify="center")
-      v-btn.mx-4(
-        :disabled="currentId <= 1"
-        text
-        fab
-        @click="currentId--; movePage()"
-      ) <<
-      h2.mx-4.pt-2 {{ currentId }}. {{ answerTitles[currentId - 1] }}
-      v-btn.mx-4(
-        :disabled="currentId >= 10"
-        text
-        fab
-        @click="currentId++; movePage()"
-      ) >>
+      v-col(cols="2")
+        v-row(justify="center")
+          v-btn.mx-4(
+            :disabled="currentId <= 1"
+            text
+            fab
+            @click="currentId--; movePage()"
+          ) <<
+      v-col(cols="6" sm="4" md="3" text="center")
+        v-row(justify="center")
+          h2.mx-4.pt-2 {{ currentId }}. {{ answerTitles[currentId - 1] }}
+      v-col(cols="2")
+        v-row(justify="center")
+          v-btn.mx-4(
+            :disabled="currentId >= 6"
+            text
+            fab
+            @click="currentId++; movePage()"
+          ) >>
     v-row.pa-4(justify="center")
       v-col(cols="12" md="6" lg="5" xl="4")
         v-row(justify="center")
