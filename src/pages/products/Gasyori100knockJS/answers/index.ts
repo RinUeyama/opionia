@@ -3,8 +3,12 @@
  *
  */
 
-import answer2 from './answer2'
 import RGBtoBGR from './answer1'
+import grayscale from './answer2'
+import binalize from './answer3'
+import binalizeOtsu from './answer4'
+import RGBtoHSV from './answer5'
+import subtractiveColor from './answer6'
 
 /**
  * キャンバスに画像を描画する関数．
@@ -30,8 +34,12 @@ export function drawCanvas (canvasId: string, image: HTMLImageElement): void {
 export function answerFunction (id: number, canvasId: string, image: HTMLImageElement): void {
   // 画像処理関数のリスト．インデックスを指定してアクセス．
   const answers: any = [
-    /** 1 **/ RGBtoBGR,
-    /** 2 **/ answer2
+    /** 1 */ RGBtoBGR,
+    /** 2 */ grayscale,
+    /** 3 */ binalize,
+    /** 4 */ binalizeOtsu,
+    /** 5 */ RGBtoHSV,
+    /** 6 */ subtractiveColor
   ]
 
   /**

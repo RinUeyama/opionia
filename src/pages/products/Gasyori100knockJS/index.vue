@@ -13,7 +13,7 @@
       ) <<
       h2.mx-4.pt-2 {{ currentId }}. {{ answerTitles[currentId - 1] }}
       v-btn.mx-4(
-        :disabled="currentId >= 2"
+        :disabled="currentId >= 10"
         text
         fab
         @click="currentId++; movePage()"
@@ -41,8 +41,12 @@ import SrcCode from '@/pages/products/Gasyori100knockJS/answers/codes/SrcCode.vu
 })
 export default class Gasyori100knockJS extends Vue {
   answerTitles: Array<string> = [
-    /** 1 **/ 'RGBtoBGR',
-    /** 2 **/ 'greyscale'
+    /** 1 */ 'RGBtoBGR',
+    /** 2 */ 'グレースケール',
+    /** 3 */ '二値化',
+    /** 4 */ '大津の二値化',
+    /** 5 */ 'HSV変換',
+    /** 6 */ '減色処理'
   ];
 
   @Prop({ type: Number, default: 1, required: true })
