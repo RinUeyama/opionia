@@ -19,7 +19,7 @@
       v-col(cols="2")
         v-row(justify="center")
           v-btn.mx-4(
-            :disabled="currentId >= 6"
+            :disabled="currentId >= 7"
             text
             fab
             @click="currentId++; movePage()"
@@ -52,7 +52,8 @@ export default class Gasyori100knockJS extends Vue {
     /** 3 */ '二値化',
     /** 4 */ '大津の二値化',
     /** 5 */ 'HSV変換',
-    /** 6 */ '減色処理'
+    /** 6 */ '減色処理',
+    /** 7 */ '平均プーリング'
   ];
 
   @Prop({ type: Number, default: 1, required: true })

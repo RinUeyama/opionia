@@ -9,6 +9,7 @@ import binalize from './answer3'
 import binalizeOtsu from './answer4'
 import RGBtoHSV from './answer5'
 import subtractiveColor from './answer6'
+import poolingAvg from './answer7'
 
 /**
  * キャンバスに画像を描画する関数．
@@ -39,7 +40,8 @@ export function answerFunction (id: number, canvasId: string, image: HTMLImageEl
     /** 3 */ binalize,
     /** 4 */ binalizeOtsu,
     /** 5 */ RGBtoHSV,
-    /** 6 */ subtractiveColor
+    /** 6 */ subtractiveColor,
+    /** 7 */ poolingAvg
   ]
 
   /**

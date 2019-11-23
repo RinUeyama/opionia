@@ -26,5 +26,5 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class AnswerCode4 extends Vue {}
+export default class AnswerCode6 extends Vue {}
 </script>
