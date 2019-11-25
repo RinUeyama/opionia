@@ -1,8 +1,7 @@
 /**
- * @file 解答済みのanswerXXXを取り込んで，
+ * @file 解答済みのanswerXXXを取り込んで，画像を処理して出力します．
  *
  */
-
 import RGBtoBGR from './answer1'
 import grayscale from './answer2'
 import binalize from './answer3'
