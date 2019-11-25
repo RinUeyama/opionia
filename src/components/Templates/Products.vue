@@ -8,6 +8,7 @@
           v-card.ma-4.pa-4(
             flat
             hover
+            :disabled="product.close"
             @click="route(product.path)"
           )
             v-img(
@@ -51,20 +52,20 @@ export default class Products extends Vue {
     {
       name: 'CoC きゃらんだむ',
       thumbnail: require('@/assets/thumbnail/CoC_charandom.png'),
-      path: '',
+      path: '/CoC_charandom',
       description: 'クトゥルフ神話TRPGのキャラクターを自動生成',
       dark: true
     },
     {
       name: 'OPIONIA (old)',
       thumbnail: require('@/assets/thumbnail/OPIONIA_old.png'),
-      path: '',
+      path: '/opionia_old',
       description: 'このドメインはかつてブログとして使用していました．'
     },
     {
       name: 'ResonicaPress',
       thumbnail: require('@/assets/thumbnail/ResonicaPress.png'),
-      path: '',
+      path: '/resonica_press',
       description: 'アナログゲームのデータ管理'
     },
     {

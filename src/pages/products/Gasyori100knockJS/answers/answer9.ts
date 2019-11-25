@@ -8,6 +8,6 @@ export default function gaussianFilter (
   _dst: ImageData,
   canvas: HTMLCanvasElement
 ): void {
-  const srcTensor = tf.browser.fromPixels(src)
+  const srcTensor: tf.Tensor<tf.Rank.R3> = tf.browser.fromPixels(src)
   tf.browser.toPixels(srcTensor, canvas)
 }

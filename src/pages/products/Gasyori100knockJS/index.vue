@@ -1,9 +1,10 @@
 <template lang="pug">
   v-container
+    home-button.mt-4
     v-row.mt-4.pa-4(justify="center")
       article
         h1 画像処理100本ノック JavaScript
-        p yoyoyo_様の画像処理100本ノックをJavaScript(TypeScript)で解いたものです．
+        p yoyoyo_ 様の画像処理100本ノックを JavaScript ( TypeScript / Tensorflow.js ) で 1日1問のペースで解き進めています．
     v-row.mt-4.pa-4(justify="center")
       v-col(cols="2")
         v-row(justify="center")
@@ -31,17 +32,25 @@
       v-col(cols="12" md="6" lg="5" xl="4")
         v-row(justify="center")
           canvas#canvas_answer
-    v-row.mt-4.pa-4(justify="center")
+    v-row.my-4.pa-4(justify="center")
       SrcCode(:id="currentId")
+    v-row.mb-4.pa-4(justify="center")
+      v-btn(
+        to="/"
+        outlined
+        large
+      ) ホーム
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { drawCanvas, answerFunction } from '@/pages/products/Gasyori100knockJS/answers/'
+import HomeButton from '@/components/Atoms/HomeButton.vue'
 import SrcCode from '@/pages/products/Gasyori100knockJS/answers/codes/SrcCode.vue'
 
 @Component({
   components: {
+    HomeButton,
     SrcCode
   }
 })
