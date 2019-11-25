@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue, Inject } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 /** TODO: ここのインポートが冗長なので簡単に書きたい */
 import AnswerCode1 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode1.vue'
 import AnswerCode2 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode2.vue'
