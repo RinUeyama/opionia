@@ -5,8 +5,8 @@
  * Maxプーリング
  */
 export default function poolingMax (
-  srcData: Uint8ClampedArray,
-  dstData: Uint8ClampedArray
+  src: ImageData,
+  dst: ImageData
 ): void {
   /**
    * 本来なら引数で渡されるであろう値．
@@ -20,9 +20,9 @@ export default function poolingMax (
    * I. 8x8 で画像を区切ります．
    */
   let keys: Array&lt;number> = []
-  for (let i = 0; i &lt; srcData.length; i++) {
+  for (let i = 0; i &lt; src.data.length; i++) {
     if (i % 4 === 3) {
-      dstData[i] = srcData[i]
+      dst.data[i] = src.data[i]
     /**
      * 1. 8px ずつ分割された行のうち 1px 目のインデックスを指定します．
      * 2. 行の中の rgba のうち，8pxごとの r のインデックスを抜き出します．
@@ -51,28 +51,28 @@ export default function poolingMax (
     let maxB: number = 0
     /** 1. 範囲内の色のうち最大のものを取り出します */
     for (let j = 0; j &lt; (4 * POOLING_PX); j += 4) {
-      maxR = maxR &lt; srcData[keys[i] + j + 0] ? srcData[keys[i] + j + 0] : maxR
-      maxG = maxG &lt; srcData[keys[i] + j + 1] ? srcData[keys[i] + j + 1] : maxG
-      maxB = maxB &lt; srcData[keys[i] + j + 2] ? srcData[keys[i] + j + 2] : maxB
+      maxR = maxR &lt; src.data[keys[i] + j + 0] ? src.data[keys[i] + j + 0] : maxR
+      maxG = maxG &lt; src.data[keys[i] + j + 1] ? src.data[keys[i] + j + 1] : maxG
+      maxB = maxB &lt; src.data[keys[i] + j + 2] ? src.data[keys[i] + j + 2] : maxB
       for (let k = 1; k &lt; POOLING_PX; k++) {
-        maxR = maxR &lt; srcData[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX]
-          ? srcData[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX] : maxR
-        maxG = maxG &lt; srcData[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX]
-          ? srcData[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX] : maxG
-        maxB = maxB &lt; srcData[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX]
-          ? srcData[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX] : maxB
+        maxR = maxR &lt; src.data[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX]
+          ? src.data[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX] : maxR
+        maxG = maxG &lt; src.data[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX]
+          ? src.data[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX] : maxG
+        maxB = maxB &lt; src.data[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX]
+          ? src.data[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX] : maxB
       }
     }
 
     /** 2. 最大色を出力します */
     for (let j = 0; j &lt; (4 * POOLING_PX); j += 4) {
-      dstData[keys[i] + j + 0] = maxR
-      dstData[keys[i] + j + 1] = maxG
-      dstData[keys[i] + j + 2] = maxB
+      dst.data[keys[i] + j + 0] = maxR
+      dst.data[keys[i] + j + 1] = maxG
+      dst.data[keys[i] + j + 2] = maxB
       for (let k = 1; k &lt; POOLING_PX; k++) {
-        dstData[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX] = maxR
-        dstData[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX] = maxG
-        dstData[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX] = maxB
+        dst.data[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX] = maxR
+        dst.data[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX] = maxG
+        dst.data[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX] = maxB
       }
     }
   }

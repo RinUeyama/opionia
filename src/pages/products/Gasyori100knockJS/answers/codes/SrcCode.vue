@@ -13,6 +13,7 @@ import AnswerCode5 from '@/pages/products/Gasyori100knockJS/answers/codes/Answer
 import AnswerCode6 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode6.vue'
 import AnswerCode7 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode7.vue'
 import AnswerCode8 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode8.vue'
+import AnswerCode9 from '@/pages/products/Gasyori100knockJS/answers/codes/AnswerCode9.vue'
 
 @Component({
   components: {
@@ -23,7 +24,8 @@ import AnswerCode8 from '@/pages/products/Gasyori100knockJS/answers/codes/Answer
     AnswerCode5,
     AnswerCode6,
     AnswerCode7,
-    AnswerCode8
+    AnswerCode8,
+    AnswerCode9
   }
 })
 export default class SrcCode extends Vue {

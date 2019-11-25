@@ -1,27 +1,30 @@
 <template>
   <div v-highlight>
     <pre class="lang-javascript"><code>
-    /**
-     * グレースケール
-     */
-    export default function grayscale (
-      srcData: Uint8ClampedArray,
-      dstData: Uint8ClampedArray
-    ): void {
-      for (let i = 0; i &lt; srcData.length; i += 4) {
-        const grey =
-          0.2126 * srcData[i + 0] +
-          0.7152 * srcData[i + 1] +
-          0.0722 * srcData[i + 2]
+/**
+ * グレースケール
+ *
+ * ITU-R Rec BT.709
+ * https://qiita.com/yoya/items/96c36b069e74398796f3
+ */
+export default function grayscale (
+  src: ImageData,
+  dst: ImageData
+): void {
+  for (let i = 0; i &lt; src.data.length; i += 4) {
+    const grey =
+      0.2126 * src.data[i + 0] +
+      0.7152 * src.data[i + 1] +
+      0.0722 * src.data[i + 2]
 
-        dstData[i] =
-          dstData[i + 1] =
-          dstData[i + 2] =
-          grey
+    dst.data[i] =
+      dst.data[i + 1] =
+      dst.data[i + 2] =
+      grey
 
-        dstData[i + 3] = srcData[i + 3]
-      }
-    }
+    dst.data[i + 3] = src.data[i + 3]
+  }
+}
     </code></pre>
   </div>
 </template>

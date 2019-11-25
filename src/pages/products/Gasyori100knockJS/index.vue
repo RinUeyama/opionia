@@ -15,11 +15,11 @@
           ) <<
       v-col(cols="6" sm="4" md="3" text="center")
         v-row(justify="center")
-          h2.mx-4.pt-2 {{ currentId }}. {{ answerTitles[currentId - 1] }}
+          h3.mx-4.pt-4 {{ currentId }}. {{ answerTitles[currentId - 1] }}
       v-col(cols="2")
         v-row(justify="center")
           v-btn.mx-4(
-            :disabled="currentId >= 8"
+            :disabled="currentId >= 9"
             text
             fab
             @click="currentId++; movePage()"
@@ -54,7 +54,8 @@ export default class Gasyori100knockJS extends Vue {
     /** 5 */ 'HSV変換',
     /** 6 */ '減色処理',
     /** 7 */ '平均プーリング',
-    /** 8 */ 'Maxプーリング'
+    /** 8 */ 'Maxプーリング',
+    /** 9 */ 'ガウシアンフィルタ'
   ];
 
   @Prop({ type: Number, default: 1, required: true })

@@ -10,6 +10,7 @@ import RGBtoHSV from './answer5'
 import subtractiveColor from './answer6'
 import poolingAvg from './answer7'
 import poolingMax from './answer8'
+import gaussianFilter from './answer9'
 
 /**
  * キャンバスに画像を描画する関数．
@@ -42,7 +43,8 @@ export function answerFunction (id: number, canvasId: string, image: HTMLImageEl
     /** 5 */ RGBtoHSV,
     /** 6 */ subtractiveColor,
     /** 7 */ poolingAvg,
-    /** 8 */ poolingMax
+    /** 8 */ poolingMax,
+    /** 9 */ gaussianFilter
   ]
 
   /**
@@ -63,7 +65,7 @@ export function answerFunction (id: number, canvasId: string, image: HTMLImageEl
 
       let src: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
       let dst: ImageData = ctx.createImageData(_image.naturalWidth, image.naturalHeight)
-      answers[id - 1](src.data, dst.data)
+      answers[id - 1](src, dst, canvas)
 
       ctx.putImageData(dst, 0, 0)
     }

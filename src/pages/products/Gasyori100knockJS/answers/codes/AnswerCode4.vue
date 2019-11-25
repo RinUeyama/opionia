@@ -1,26 +1,27 @@
 <template>
   <div v-highlight>
     <pre class="lang-javascript"><code>
-      /**
-       * 大津の二値化（省略）
-       */
-      import grayscale from './answer2'
+/**
+ * 大津の二値化（省略）
+ */
+import grayscale from './answer2'
 
-      export default function binarizeOtsu (
-        srcData: Uint8ClampedArray,
-        dstData: Uint8ClampedArray
-      ): void {
-        grayscale(srcData, dstData)
-        /** 本来ならば，この閾値を自然な処理になるよう整えます */
-        const threshhold = 128
+export default function binarizeOtsu (
+  src: ImageData,
+  dst: ImageData
+): void {
+  grayscale(src, dst)
+  const threshhold = 128
 
-        for (let i = 0; i &lt; srcData.length; i++) {
-          /** RGBaからRGBを抜き出して二値化を施します */
-          if (i % 4 !== 3) {
-            dstData[i] > threshhold ? dstData[i] = 255 : dstData[i] = 0
-          }
-        }
-      }
+  for (let i = 0; i &lt; src.data.length; i++) {
+    /** RGBaからRGBを抜き出して二値化を施します */
+    if (i % 4 === 3) {
+      dst.data[i] = src.data[i]
+    } else {
+      dst.data[i] > threshhold ? dst.data[i] = 255 : dst.data[i] = 0
+    }
+  }
+}
     </code></pre>
   </div>
 </template>

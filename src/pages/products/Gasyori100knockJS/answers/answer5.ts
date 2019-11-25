@@ -2,10 +2,10 @@
  * RGBtoHSV
  */
 export default function RGBtoHSV (
-  srcData: Uint8ClampedArray,
-  dstData: Uint8ClampedArray
+  src: ImageData,
+  dst: ImageData
 ): void {
-  for (let i = 0; i < srcData.length; i++) {
-    dstData[i] = srcData[i]
+  for (let i = 0; i < src.data.length; i++) {
+    dst.data[i] = src.data[i]
   }
 }

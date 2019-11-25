@@ -11,8 +11,8 @@
  * なお今回の画像サイズは 400x336 です．
  */
 export default function poolingAvg (
-  srcData: Uint8ClampedArray,
-  dstData: Uint8ClampedArray
+  src: ImageData,
+  dst: ImageData
 ): void {
   /**
    * 本来なら引数で渡されるであろう値．
@@ -26,9 +26,9 @@ export default function poolingAvg (
    * I. 8x8 で画像を区切ります．
    */
   let keys: Array&lt;number> = []
-  for (let i = 0; i &lt; srcData.length; i++) {
+  for (let i = 0; i &lt; src.data.length; i++) {
     if (i % 4 === 3) {
-      dstData[i] = srcData[i]
+      dst.data[i] = src.data[i]
     /**
      * 1. 8px ずつ分割された行のうち 1px 目のインデックスを指定します．
      * 2. 行の中の rgba のうち，8pxごとの r のインデックスを抜き出します．
@@ -57,13 +57,13 @@ export default function poolingAvg (
     let b: number = 0
     /** 1. 範囲内の色を rgb ごとに加えます */
     for (let j = 0; j &lt; (4 * POOLING_PX); j += 4) {
-      r += srcData[keys[i] + j + 0]
-      g += srcData[keys[i] + j + 1]
-      b += srcData[keys[i] + j + 2]
+      r += src.data[keys[i] + j + 0]
+      g += src.data[keys[i] + j + 1]
+      b += src.data[keys[i] + j + 2]
       for (let k = 1; k &lt; POOLING_PX; k++) {
-        r += srcData[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX]
-        g += srcData[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX]
-        b += srcData[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX]
+        r += src.data[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX]
+        g += src.data[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX]
+        b += src.data[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX]
       }
     }
 
@@ -74,13 +74,13 @@ export default function poolingAvg (
 
     /** 3. 完成した平均色を出力します */
     for (let j = 0; j &lt; (4 * POOLING_PX); j += 4) {
-      dstData[keys[i] + j + 0] = r
-      dstData[keys[i] + j + 1] = g
-      dstData[keys[i] + j + 2] = b
+      dst.data[keys[i] + j + 0] = r
+      dst.data[keys[i] + j + 1] = g
+      dst.data[keys[i] + j + 2] = b
       for (let k = 1; k &lt; POOLING_PX; k++) {
-        dstData[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX] = r
-        dstData[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX] = g
-        dstData[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX] = b
+        dst.data[keys[i] + j + 0 + k * IMAGE_WIDTH_INDEX] = r
+        dst.data[keys[i] + j + 1 + k * IMAGE_WIDTH_INDEX] = g
+        dst.data[keys[i] + j + 2 + k * IMAGE_WIDTH_INDEX] = b
       }
     }
   }
