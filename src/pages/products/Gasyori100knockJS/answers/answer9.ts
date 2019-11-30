@@ -10,34 +10,24 @@ export default function gaussianFilter (
 ): void {
   const srcTensor: tf.Tensor<tf.Rank.R3> = tf.browser.fromPixels(src)
 
-  const gaussianKernel = (
-    ksize: number,
-    sigma: number
-  ) => {
-    if (ksize % 2 === 0) {
-      console.error(`ksize is inputed ${ksize}. ksize must be odd.`)
-    }
+  const kernel: tf.Tensor<tf.Rank.R3> = tf.tensor3d(
+    [
+      [[1, 1, 1], [2, 2, 2], [1, 1, 1]],
+      [[2, 2, 2], [4, 4, 4], [2, 2, 2]],
+      [[1, 1, 1], [2, 2, 2], [1, 1, 1]]
+    ]
+  )
 
-    const x: tf.Tensor<tf.Rank.R1> = tf.linspace(-sigma, sigma, ksize)
-    const y: tf.Tensor<tf.Rank.R1> = tf.linspace(-sigma, sigma, ksize)
-    console.log(`x, y: ${x}, ${y}`)
-    const kernel = tf.exp(-(tf.square(x).add(tf.square(y))).floorDiv(2 * Math.pow(sigma, 2))).floorDiv(Math.sqrt(2 * Math.PI) * sigma)
+  const padTensor: tf.Tensor<tf.Rank.R3> = tf.pad(srcTensor, [[1, 1], [1, 1], [0, 0]])
+  const dstTensor: tf.Tensor<tf.Rank.R3> = tf.zerosLike(padTensor)
 
-    return kernel
-  }
-
-  console.log(`kernel: ${gaussianKernel(3, 1.3)}`)
-
-  const kernel = gaussianKernel(3, 1.3)
-
-  const padTensor = srcTensor.pad([[1, 1], [1, 1]])
-  let dstTensor = tf.zeros([src.height, src.width, 3]).pad([[1, 1], [1, 1]])
-
-  for (let i = 0; i < src.width; i++) {
-    for (let j = 0; j < src.height; j++) {
-      tf.add(dstTensor.slice([i, j], [3, 3]), padTensor.slice([i, j], [3, 3]).matMul(kernel))
+  for (let i = 0; i < src.width - 2; i++) {
+    for (let j = 0; j < src.height - 2; j++) {
+      tf.add(dstTensor.slice([i, j], [i + 3, j + 3]), srcTensor.slice([i, j], [i + 3, j + 3])).matMul(kernel)
     }
   }
 
   console.log(`Dst after for: ${dstTensor}`)
+
+  tf.browser.toPixels(dstTensor, canvas)
 }
